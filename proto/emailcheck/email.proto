@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package email;
+
+option go_package = "proto;email";
+
+service EmailService {
+  rpc ValidateEmail (EmailRequest) returns (EmailValidationResponse);
+}
+
+message EmailRequest {
+  string email = 1;
+}
+
+message EmailValidationResponse {
+  bool isValid = 1;
+  string normalizedEmail = 2;
+  string localPart = 3;
+  string domain = 4;
+}
